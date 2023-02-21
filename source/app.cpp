@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 // app.cpp
 // 
-// Displays a list of random numbers in forward order, then in backward order.
+// Displays a list of random numbers in forward order, then in backwards order.
 // Random numbers range from 1 to the absolute value of user's maximum,
 // inclusive.
 //------------------------------------------------------------------------------
