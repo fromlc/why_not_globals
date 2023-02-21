@@ -29,7 +29,7 @@ vector<int> g_vi;
 //------------------------------------------------------------------------------
 // local function prototypes
 //------------------------------------------------------------------------------
-void getRange();
+void getMax();
 void makeList();
 void displayForwards();
 void displayBackwards();
@@ -46,7 +46,7 @@ int main() {
 
 	do {
 
-		getRange();
+		getMax();
 		if (g_max) {
 			makeList();
 			displayForwards();
@@ -63,7 +63,7 @@ int main() {
 //------------------------------------------------------------------------------
 // updates global int max
 //------------------------------------------------------------------------------
-void getRange() {
+void getMax() {
 	cout << "\nEnter n, your max random number (0 quits): ";
 	cin >> g_max;
 	g_max = abs(g_max);
