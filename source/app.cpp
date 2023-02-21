@@ -46,7 +46,7 @@ void getRange() {
 }
 
 void makeList() {
-
+	int max = 1;
 	for (int i = 0; i < NUM_RANDOMS; i++) {
 		vi.push_back(rand() % max + 1);
 	}
