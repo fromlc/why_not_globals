@@ -13,15 +13,18 @@
 //------------------------------------------------------------------------------
 using std::cin;
 using std::cout;
-using std::endl;
 using std::vector;
 
 //------------------------------------------------------------------------------
 // constants
 //------------------------------------------------------------------------------
 constexpr int NUM_RANDOMS = 10;
-int max = 1;
-vector<int> vi;
+
+//------------------------------------------------------------------------------
+// globals
+//------------------------------------------------------------------------------
+int g_max = 1;
+vector<int> g_vi;
 
 //------------------------------------------------------------------------------
 // local function prototypes
@@ -37,20 +40,20 @@ void displayBackwards();
 int main() {
 
 	cout << "\nDisplays a list of " << NUM_RANDOMS
-		<< " numbers from 1 to n, inclusive." << endl;
+		<< " numbers from 1 to n, inclusive." << '\n';
 
 	srand(time(0));
 
 	do {
 
 		getRange();
-		if (max) {
+		if (g_max) {
 			makeList();
 			displayForwards();
 			displayBackwards();
 		}
 
-	} while (max);
+	} while (g_max);
 
 	cout << "\nGoodbye!\n";
 
@@ -62,8 +65,8 @@ int main() {
 //------------------------------------------------------------------------------
 void getRange() {
 	cout << "\nEnter n, your max random number (0 quits): ";
-	cin >> max;
-	max = abs(max);
+	cin >> g_max;
+	g_max = abs(g_max);
 }
 
 //------------------------------------------------------------------------------
@@ -72,7 +75,7 @@ void getRange() {
 void makeList() {
 
 	for (int i = 0; i < NUM_RANDOMS; i++) {
-		vi.push_back(rand() % max + 1);
+		g_vi.push_back(rand() % g_max + 1);
 	}
 }
 
@@ -82,9 +85,9 @@ void makeList() {
 void displayForwards() {
 
 	for (int i = 0; i < NUM_RANDOMS; i++) {
-		cout << vi.at(i) << ' ';
+		cout << g_vi.at(i) << ' ';
 	}
-	cout << endl;
+	cout << '\n';
 }
 
 //------------------------------------------------------------------------------
@@ -92,10 +95,10 @@ void displayForwards() {
 //------------------------------------------------------------------------------
 void displayBackwards() {
 
-	while (!vi.empty()) {
+	while (!g_vi.empty()) {
 
-		cout << vi.back() << ' ';
-		vi.pop_back();
+		cout << g_vi.back() << ' ';
+		g_vi.pop_back();
 	}
-	cout << endl;
+	cout << '\n';
 }
