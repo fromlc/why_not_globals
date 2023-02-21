@@ -29,6 +29,8 @@ vector<int> g_vi;
 //------------------------------------------------------------------------------
 // local function prototypes
 //------------------------------------------------------------------------------
+void initApp();
+void appLoop();
 bool getMax(int&);
 void makeList(int);
 void displayForwards();
@@ -39,11 +41,30 @@ void displayBackwards();
 //------------------------------------------------------------------------------
 int main() {
 
+	initApp();
+	appLoop();
+
+	cout << "\nGoodbye!\n";
+
+	return 0;
+}
+
+//------------------------------------------------------------------------------
+// app banner, seed random number generator
+//------------------------------------------------------------------------------
+void initApp() {
+
 	cout << "\nCreates a list of " << NUM_RANDOMS
 		<< " numbers from 1 to n, inclusive.\n";
 	cout << "Displays the list in forward, then backwards order\n\n";
 
-	srand(time(0));
+	srand((unsigned int)time(0));
+}
+
+//------------------------------------------------------------------------------
+// app input and execution loop
+//------------------------------------------------------------------------------
+void appLoop() {
 
 	int max = 0;
 	while (getMax(max)) {
@@ -51,10 +72,6 @@ int main() {
 		displayForwards();
 		displayBackwards();
 	}
-
-	cout << "\nGoodbye!\n";
-
-	return 0;
 }
 
 //------------------------------------------------------------------------------
