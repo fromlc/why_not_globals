@@ -23,14 +23,13 @@ constexpr int NUM_RANDOMS = 10;
 //------------------------------------------------------------------------------
 // globals
 //------------------------------------------------------------------------------
-int g_max = 1;
 vector<int> g_vi;
 
 //------------------------------------------------------------------------------
 // local function prototypes
 //------------------------------------------------------------------------------
-void getMax();
-void makeList();
+bool getMax(int&);
+void makeList(int);
 void displayForwards();
 void displayBackwards();
 
@@ -39,21 +38,18 @@ void displayBackwards();
 //------------------------------------------------------------------------------
 int main() {
 
-	cout << "\nDisplays a list of " << NUM_RANDOMS
-		<< " numbers from 1 to n, inclusive." << '\n';
+	cout << "\nCreates a list of " << NUM_RANDOMS
+		<< " numbers from 1 to n, inclusive.\n";
+	cout << "Displays the list in forward, then backwards order\n\n";
 
 	srand(time(0));
 
-	do {
-
-		getMax();
-		if (g_max) {
-			makeList();
-			displayForwards();
-			displayBackwards();
-		}
-
-	} while (g_max);
+	int max = 0;
+	while (getMax(max)) {
+		makeList(max);
+		displayForwards();
+		displayBackwards();
+	}
 
 	cout << "\nGoodbye!\n";
 
@@ -61,21 +57,25 @@ int main() {
 }
 
 //------------------------------------------------------------------------------
-// updates global int max
+// - stores abs value of user's maximum random number in reference param max
+// - returns true if user entered a non-zero number, false otherwise
 //------------------------------------------------------------------------------
-void getMax() {
+bool getMax(int& max) {
 	cout << "\nEnter n, your max random number (0 quits): ";
-	cin >> g_max;
-	g_max = abs(g_max);
+
+	cin >> max;
+	max = abs(max);
+
+	return max ? true : false;
 }
 
 //------------------------------------------------------------------------------
 // fills vector with NUM_RANDOMS random numbers from 1 to max, inclusive
 //------------------------------------------------------------------------------
-void makeList() {
+void makeList(int max) {
 
 	for (int i = 0; i < NUM_RANDOMS; i++) {
-		g_vi.push_back(rand() % g_max + 1);
+		g_vi.push_back(rand() % max + 1);
 	}
 }
 
