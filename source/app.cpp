@@ -41,6 +41,7 @@ int main() {
 
 void getRange() {
 	cout << "\nEnter n, your max random number (0 quits): ";
+	int max;
 	cin >> max;
 	max = abs(max);
 }
