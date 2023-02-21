@@ -2,7 +2,8 @@
 // app.cpp
 // 
 // Displays a list of random numbers in forward order, then in backward order.
-// Random numbers range from 1 to user's maximum n, inclusive.
+// Random numbers range from 1 to the absolute value of user's maximum,
+// inclusive.
 //------------------------------------------------------------------------------
 #include <iostream>
 #include <cstdlib>
